@@ -1,3 +1,4 @@
+from turtle import title
 from flask import render_template
 from app import app
 
@@ -7,7 +8,8 @@ def index():
     '''
     view root page that returns index page
     '''
-    return render_template('index.html')
+    title = 'Home - Welcome to The best Online News Website'
+    return render_template('index.html', title = title)
 
 app.route('/Articles/<int:news_id>')
 def sourceArticle(id):

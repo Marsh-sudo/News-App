@@ -50,4 +50,8 @@ def process_results(sources_list):
         language = source_item.get('language')
         country = source_item.get('country')
 
-        if 
+        sources_object = news.Sources(id,name,description,url,language,country)
+        sources_results.append(sources_object)
+
+
+    return sources_results

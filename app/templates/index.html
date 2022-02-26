@@ -9,6 +9,12 @@
     {% endif %}
 </head>
 <body>
-    
+    <!--Universal movie section-->
+    <h3>Universal News Headlines</h3>
+    <ul>
+        {% for universal_news in universal %}
+          <li>{{ universal_news.name}}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

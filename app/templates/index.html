@@ -8,6 +8,8 @@
     <title>Welcome Your Online News Feed Website</title>
     {% endif %}
 </head>
+
+{% import 'macro.html' as macro%}
 <body>
     <!--Universal movie section-->
     <h3>Universal News Headlines</h3>
@@ -15,6 +17,7 @@
         {% for universal_news in universal %}
           <li>{{ universal_news.name}}</li>
         {% endfor %}
+        {{ macro.displayMovieList(universal)}}
     </ul>
 
     <!--Business news-->
@@ -23,6 +26,7 @@
         {% for business_news in business %}
            <li>{{ business_news.name}}</li>
         {% endfor %}
+        {{ macro.displayMovieList(business)}}
     </ul>
 
     <!--Sports news-->
@@ -31,6 +35,7 @@
         {% for sport_news in sports %}
           <li>{{ sport_news.name}}</li>
         {% endfor %}
+        {{ macro.displayMovieList(sports)}}
     </ul>
 </body>
 </html>

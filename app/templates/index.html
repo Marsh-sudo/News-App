@@ -8,9 +8,13 @@
     <title>Welcome Your Online News Feed Website</title>
     {% endif %}
 </head>
-
+{% extends 'base.html'%}
 {% import 'macro.html' as macro%}
 <body>
+    <!--Content block-->
+    {% block content %}
+
+
     <!--Universal movie section-->
     <h3>Universal News Headlines</h3>
     <ul>
@@ -37,5 +41,7 @@
         {% endfor %}
         {{ macro.displayMovieList(sports)}}
     </ul>
+
+    {% endblock %}
 </body>
 </html>

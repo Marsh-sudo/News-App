@@ -10,8 +10,10 @@ def index():
     view root page that returns index page
     '''
     universal_news = get_sources('universal')
+    sport_news = get_sources('sports')
+    business_news = get_sources('business')
     title = 'Home - Welcome to The best Online News Website'
-    return render_template('index.html', title = title, universal = universal_news)
+    return render_template('index.html', title = title, universal = universal_news,sports = sport_news,business = business_news)
 
 app.route('/Articles/<int:news_id>')
 def sourceArticle(id):

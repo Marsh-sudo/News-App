@@ -7,6 +7,8 @@ import urllib3
 
 from app import app
 from urllib3.request import json
+
+from app.news_test import Articles
 from .models import news,articles
 
 #getting api key
@@ -61,11 +63,11 @@ def process_results(sources_list):
     return sources_results
 
 
-def get_articles(category):
+def get_articles(source):
     '''
     function that gets the json response to our Url request
     '''
-    get_articles_url = base_url.format(category,api_key)
+    get_articles_url = base_url.format(source,api_key)
 
     with urllib3.request.urlopen(get_articles_url)as url:
         get_articles_data = url.read()
@@ -92,5 +94,11 @@ def process_results(articles_list):
         title = article_item('title')
         author = article_item('author')
         description = article_item('description')
+        urlToImage = article_item('urlToImage')
         url = article_item('url')
+
+        articles_object = articles.Articles(id,author,title,description,url,urlToImage)
+        articles_results.append(articles_object)
+     
+    return articles_results
 

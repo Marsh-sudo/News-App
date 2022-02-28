@@ -1,27 +1,25 @@
-from email.mime import base
-import json
-from turtle import title
-from unicodedata import name
-
-import urllib3
 
 from app import app
-from urllib3.request import json
+import urllib3.request,json
 
 from app.news_test import Articles
 from .models import news,articles
+from .config import Config
+from instance.config import NEWS_API_KEY
 
 #getting api key
 api_key = app.config['NEWS_API_KEY']
 
 #getting the base url
 base_url = app.config['SOURCE_API_BASE_URL']
-base_url = app.config['ARTICLES_API_BASE_URL']
+base_url_2 = app.config['ARTICLES_API_BASE_URL']
 
 def get_sources(category):
     '''
     function that gets json response to our url requests
     '''
+    base_url = app.config['SOURCE_API_BASE_URL']
+    api_key = app.config['NEWS_API_KEY']
     get_sources_url = base_url.format(category,api_key)
 
     with urllib3.request.urlopen(get_sources_url) as url:
@@ -101,4 +99,5 @@ def process_results(articles_list):
         articles_results.append(articles_object)
      
     return articles_results
+
 

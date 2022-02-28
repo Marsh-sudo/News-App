@@ -1,3 +1,4 @@
+from ast import If
 import unittest
 from models import sources,articles
 Articles = articles.Articles
@@ -15,3 +16,7 @@ class SourceTest(unittest.TestCase):
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_source,Sources))
+
+if __name__ == '__main__':
+    unittest.main()
+

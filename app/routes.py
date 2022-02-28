@@ -32,4 +32,4 @@ def NewsArticle():
     '''
     tech_article = get_articles('tech')
   
-    return render_template('artcle.html' ,tech = tech_article )
+    return render_template('article.html' ,tech = tech_article )

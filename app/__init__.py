@@ -5,6 +5,8 @@ from flask_bootstrap import Bootstrap
 
 #initializing application
 app = Flask(__name__,instance_relative_config = True) 
+from app import routes
+
 
 #setting up configurations
 app.config.from_object(DevConfig)
@@ -13,5 +15,4 @@ app.config.from_pyfile('config.py')
 #initializing flask extension
 bootstrap = Bootstrap(app)
 
-from app import routes
 from app import error

@@ -1,14 +1,18 @@
 
 from app import app
-import urllib3.request,json
+import urllib.request,json
 
-from app.news_test import Articles
+from app.tests.news_test import Sources
+
+# from app.news_test import Articles
 from .models import news,articles
-from .config import Config
-from instance.config import NEWS_API_KEY
+# from .config import Config
+Articles=articles.Articles
+Sources=news.Sources
+# from instance.config import NEWS_API_KEY
 
 #getting api key
-api_key = app.config['NEWS_API_KEY']
+api_key=app.config['NEWS_API_KEY']
 
 #getting the base url
 base_url = app.config['SOURCE_API_BASE_URL']
@@ -22,7 +26,7 @@ def get_sources(category):
     api_key = app.config['NEWS_API_KEY']
     get_sources_url = base_url.format(category,api_key)
 
-    with urllib3.request.urlopen(get_sources_url) as url:
+    with urllib.request.urlopen(get_sources_url) as url:
         get_sources_data = url.read()
         get_sources_response = json.loads(get_sources_data)
 
@@ -65,9 +69,10 @@ def get_articles(source):
     '''
     function that gets the json response to our Url request
     '''
+
     get_articles_url = base_url.format(source,api_key)
 
-    with urllib3.request.urlopen(get_articles_url)as url:
+    with urllib.request.urlopen(get_articles_url)as url:
         get_articles_data = url.read()
         get_articles_response = json.loads(get_articles_data)
 

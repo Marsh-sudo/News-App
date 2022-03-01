@@ -1,8 +1,8 @@
-from ast import If
+
 import unittest
-from models import sources,articles
+from ..models import news,articles
 Articles = articles.Articles
-Sources = sources.Sources
+Sources = news.Sources
 
 class SourceTest(unittest.TestCase):
     '''

@@ -9,4 +9,4 @@ class Sources:
         self.description = description
         self.url = url
         self.language = language
-        self.country = country
+        self.country =country

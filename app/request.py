@@ -51,7 +51,7 @@ def process_results(sources_list):
           sources_results:A list of sources objects
     '''
 
-    sources_results = []
+    sources_results =[]
     for source_item in sources_list:
         id = source_item.get('id')
         name = source_item.get('name')

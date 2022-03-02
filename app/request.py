@@ -1,20 +1,20 @@
 
-from app import app
 import urllib.request,json
 
 from app.tests.news_test import Sources
 
 # from app.news_test import Articles
-from .models import news,articles
+from .models import Sources,Articles
 # from .config import Config
-Articles=articles.Articles
-Sources=news.Sources
-# from instance.config import NEWS_API_KEY
-api_key=app.config['NEWS_API_KEY']
 
+
+def configure_request(app):
+    global api_key,base_url,base_url_2
+# from instance.config import NEWS_API_KEY
+    api_key=app.config['NEWS_API_KEY']
 #getting the base url
-base_url = app.config['SOURCE_API_BASE_URL']
-base_url_2 = app.config['ARTICLES_API_BASE_URL']
+    base_url = app.config['SOURCE_API_BASE_URL']
+    base_url_2 = app.config['ARTICLES_API_BASE_URL']
 
 # Getting api key
 api_key = None
@@ -60,7 +60,7 @@ def process_results(sources_list):
         language = source_item.get('language')
         country = source_item.get('country')
 
-        sources_object = news.Sources(id,name,description,url,language,country)
+        sources_object = Sources(id,name,description,url,language,country)
         sources_results.append(sources_object)
 
 
@@ -102,7 +102,7 @@ def process_results(articles_list):
         urlToImage = article_item('urlToImage')
         url = article_item('url')
 
-        articles_object = articles.Articles(id,author,title,description,url,urlToImage)
+        articles_object = Articles(id,author,title,description,url,urlToImage)
         articles_results.append(articles_object)
      
     return articles_results

@@ -25,7 +25,7 @@ def sourceArticle(id):
     print(general_articles)
     return render_template('sources.html',articles = general_articles)
 
-@app.route('/Global-Articles')
+app.route('/Global-Articles')
 def NewsArticle():
     '''
     routes that returns the news article

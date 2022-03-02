@@ -10,20 +10,22 @@ from .models import news,articles
 Articles=articles.Articles
 Sources=news.Sources
 # from instance.config import NEWS_API_KEY
-
-#getting api key
 api_key=app.config['NEWS_API_KEY']
 
 #getting the base url
 base_url = app.config['SOURCE_API_BASE_URL']
 base_url_2 = app.config['ARTICLES_API_BASE_URL']
 
+# Getting api key
+api_key = None
+# Getting the movie base url
+base_url = None
+
+
 def get_sources(category):
     '''
     function that gets json response to our url requests
     '''
-    base_url = app.config['SOURCE_API_BASE_URL']
-    api_key = app.config['NEWS_API_KEY']
     get_sources_url = base_url.format(category,api_key)
 
     with urllib.request.urlopen(get_sources_url) as url:

@@ -1,3 +1,7 @@
 from flask import Blueprint
+
+
 main = Blueprint('main',__name__)
-from . import routes,error
+
+
+from . import routes

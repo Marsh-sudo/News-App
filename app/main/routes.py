@@ -1,5 +1,5 @@
 
-from flask import render_template,request,redirect,url_for
+from flask import render_template
 from . import main
 from ..request import get_sources,get_articles
 
@@ -9,26 +9,28 @@ def index():
     '''
     view root page that returns index page
     '''
-    universal_news = get_sources('universal')
-    sport_news = get_sources('sports')
-    business_news = get_sources('business')
+    # universal_news = get_sources('universal')
+    # sport_news = get_sources('sports')
+    # business_news = get_sources('business')
+    news_sources = get_sources('general')
+    print(news_sources)
     title = 'Home - Welcome to The best Online News Website'
-    return render_template('index.html', title = title, universal = universal_news,sports = sport_news,business = business_news)
+    return render_template('index.html', title = title, news_sources=news_sources)
 
 @main.route('/Articles/<int:news_id>')
 def sourceArticle(id):
-    '''
+     '''
     view news page function that returns the news details page and its data
-    '''
-    general_articles = get_articles(id)
-    print(general_articles)
-    return render_template('sources.html',articles = general_articles)
+     '''
+     general_articles = get_articles(id)
+     print(general_articles)
+     return render_template('sources.html',articles = general_articles)
 
-@main.route('/Global-Articles')
-def NewsArticle():
-    '''
-    routes that returns the news article
-    '''
-    tech_article = get_articles('tech')
+# @main.route('/Global-Articles')
+# def NewsArticle():
+#     '''
+#     routes that returns the news article
+#     '''
+#     tech_article = get_articles('tech')
   
-    return render_template('article.html' ,tech = tech_article )
+    # return render_template('article.html' ,tech = tech_article )

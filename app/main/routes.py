@@ -10,13 +10,13 @@ def index():
     '''
     view root page that returns index page
     '''
-    # universal_news = get_sources('universal')
-    # sport_news = get_sources('sports')
-    # business_news = get_sources('business')
+    universal_news = get_sources('universal')
+    sport_news = get_sources('sports')
+    business_news = get_sources('business')
     news_sources = get_sources('general')
     print(news_sources)
     title = 'Home - Welcome to The best Online News Website'
-    return render_template('base.html', title = title, news_sources=news_sources)
+    return render_template('base.html', title = title, news_sources=news_sources,universal_news=universal_news,sport_news=sport_news,business_news=business_news)
 
 @app.route('/Articles/<int:news_id>')
 def sourceArticle(id):

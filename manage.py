@@ -2,7 +2,7 @@
 # from app import create_app
 # from flask_script import Manager,Server
 
-#CREATING APP INSTANCE
+# CREATING APP INSTANCE
 # app = create_app('development')
 
 # manager = Manager(app)
@@ -10,7 +10,8 @@
 # if __name__ =='__main__':
 #     manager.run()
 
+from distutils.debug import DEBUG
 from app import app
 
 if __name__ == '__main__':
-    app.run()
+    app.run(DEBUG=True)

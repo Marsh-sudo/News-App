@@ -14,11 +14,12 @@ from app import app
 
 def configure_request(app):
     global api_key,base_url,base_url_2
-# from instance.config import NEWS_API_KEY
-    # api_key=app.config['NEWS_API_KEY']
+from instance.config import NEWS_API_KEY
+
+api_key=app.config['NEWS_API_KEY']
 #getting the base url
-    # base_url = app.config['SOURCE_API_BASE_URL']
-    # base_url_2 = app.config['ARTICLES_API_BASE_URL']
+base_url = app.config['SOURCE_API_BASE_URL']
+base_url_2 = app.config['ARTICLES_API_BASE_URL']
 
 # Getting api key
 # api_key = None
@@ -40,8 +41,8 @@ def get_sources(category):
 
         sources_results = None
 
-        if get_sources_response['results']:
-            sources_results_list = get_sources_response['results']
+        if get_sources_response['general']:
+            sources_results_list = get_sources_response['general']
             sources_results = process_results(sources_results_list)
 
     return sources_results
@@ -98,23 +99,23 @@ def get_articles(source):
 
 
 
-# def process_results(articles_list):
-#     '''
-#     function that process the articles results and transform them to a list of objects 
-#     '''
+def process_results(articles_list):
+    '''
+    function that process the articles results and transform them to a list of objects 
+    '''
 
-#     articles_results = []
-#     for article_item in articles_list:
-#         id = article_item('id')
-#         title = article_item('title')
-#         author = article_item('author')
-#         description = article_item('description')
-#         urlToImage = article_item('urlToImage')
-#         url = article_item('url')
+    articles_results = []
+    for article_item in articles_list:
+        id = article_item('id')
+        title = article_item('title')
+        author = article_item('author')
+        description = article_item('description')
+        urlToImage = article_item('urlToImage')
+        url = article_item('url')
 
-#         articles_object = Articles(id,author,title,description,url,urlToImage)
-#         articles_results.append(articles_object)
+        articles_object = Articles(id,author,title,description,url,urlToImage)
+        articles_results.append(articles_object)
      
-#     return articles_results
+    return articles_results
 
 
